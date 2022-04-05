@@ -17,34 +17,35 @@ function playRound(playerSelection, computerSelection) {
     computerSelection = computerPlay()
             
     if (playerSelection == options[0].toUpperCase() && computerSelection === "Paper") {
-        console.log(`Player: ${pScore}; Computer ${++cScore}`)
+        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
         return `${lose} Paper beats Rock`
     } else if (playerSelection == options[0].toUpperCase() && computerSelection === "Scissors") {
-        console.log(`Player: ${++pScore}; Computer ${cScore}`)
+        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
         return `${win} Rock beats Scissors`
 
     } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Rock") {
-        console.log(`Player: ${++pScore}; Computer ${cScore}`)
+        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
         return `${win} Paper beats Rock`
     } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Scissors") {
-        console.log(`Player: ${pScore}; Computer ${++cScore}`)
+        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
         return `${lose} Scissors beats Paper`
 
     } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Rock") {
-        console.log(`Player: ${pScore}; Computer ${++cScore}`)
+        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
         return `${lose} Rock beats Scissors`
     } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Paper") {
-        console.log(`Player: ${++pScore}; Computer ${cScore}`)
+        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
         return `${win} Scissors beats Paper`
                 
     } else {
-        console.log(`Player: ${pScore}; Computer ${cScore}`)
+        console.log(`Player: ${pScore}; Computer: ${cScore}`)
         return "Error/Tie!"
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 1; i <= 5; i++) {
+        console.log(`Round: ${i}`)
         playRound()
     }
     if (pScore < cScore) {
