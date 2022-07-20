@@ -10,50 +10,65 @@ let lose = "You Lose!"
 let cScore = 0
 let pScore = 0
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt("State your weapon")
-    playerSelection = playerSelection.toUpperCase()
-
-    computerSelection = computerPlay()
-            
-    if (playerSelection == options[0].toUpperCase() && computerSelection === "Paper") {
-        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
-        return `${lose} Paper beats Rock`
-    } else if (playerSelection == options[0].toUpperCase() && computerSelection === "Scissors") {
-        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
-        return `${win} Rock beats Scissors`
-
-    } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Rock") {
-        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
-        return `${win} Paper beats Rock`
-    } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Scissors") {
-        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
-        return `${lose} Scissors beats Paper`
-
-    } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Rock") {
-        console.log(`Player: ${pScore}; Computer: ${++cScore}`)
-        return `${lose} Rock beats Scissors`
-    } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Paper") {
-        console.log(`Player: ${++pScore}; Computer: ${cScore}`)
-        return `${win} Scissors beats Paper`
+document.querySelectorAll('button').forEach((button)=> {
+    button.addEventListener('click', (playerSelection, computerSelection) => {
+        playerSelection = button.textContent.toUpperCase()
+        computerSelection = computerPlay()
                 
-    } else {
-        console.log(`Player: ${pScore}; Computer: ${cScore}`)
-        return "Error/Tie!"
-    }
-}
+        let total = document.querySelector('.total')
+        let round = document.querySelector('.round')
 
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        console.log(`Round: ${i}`)
-        playRound()
-    }
-    if (pScore < cScore) {
-        return "You lose the game"
-    } else if (pScore > cScore) {
-        return "You win the game"
-    } else {
-        return "It's a tie"
-    }
-}
+        if (playerSelection == options[0].toUpperCase() && computerSelection === "Paper") {
+            total.innerHTML = `Player: ${pScore}; Computer: ${++cScore}`
+            round.innerHTML = `${lose} Paper beats Rock`
+        } else if (playerSelection == options[0].toUpperCase() && computerSelection === "Scissors") {
+            total.innerHTML = `Player: ${++pScore}; Computer: ${cScore}`
+            round.innerHTML = `${win} Rock beats Scissors`
+        } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Rock") {
+            total.innerHTML = `Player: ${++pScore}; Computer: ${cScore}`
+            round.innerHTML = `${win} Paper beats Rock`
+        } else if (playerSelection == options[1].toUpperCase() && computerSelection === "Scissors") {
+            total.innerHTML = `Player: ${pScore}; Computer: ${++cScore}`
+            round.innerHTML = `${lose} Scissors beats Paper`
+        } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Rock") {
+            total.innerHTML = `Player: ${pScore}; Computer: ${++cScore}`
+            round.innerHTML = `${lose} Rock beats Scissors`
+        } else if (playerSelection == options[2].toUpperCase() && computerSelection === "Paper") {
+            total.innerHTML = `Player: ${++pScore}; Computer: ${cScore}`
+            round.innerHTML = `${win} Scissors beats Paper`
+        } else {
+            total.innerHTML = `Player: ${pScore}; Computer: ${cScore}`
+            round.innerHTML = "Error/Tie!"
+        }
+
+        if (pScore < cScore && cScore === 5) {
+            alert("You lose the game")
+            pScore = 0
+            cScore = 0
+        } else if (pScore > cScore && pScore === 5) {
+            alert("You win the game")
+            pScore = 0
+            cScore = 0
+        } else if (pScore === 5 && cScore === 5){
+            alert("It's a tie")
+            pScore = 0
+            cScore = 0
+        }
+    })
+})
+
+
+// function game() {
+//     for (let i = 1; i <= 5; i++) {
+//         div = `Round: ${i}`)
+//         playRound()
+//     }
+//     if (pScore < cScore) {
+//         return "You lose the game"
+//     } else if (pScore > cScore) {
+//         return "You win the game"
+//     } else {
+//         return "It's a tie"
+//     }
+// }
     
