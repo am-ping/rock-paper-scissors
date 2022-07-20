@@ -56,19 +56,3 @@ document.querySelectorAll('button').forEach((button)=> {
         }
     })
 })
-
-
-// function game() {
-//     for (let i = 1; i <= 5; i++) {
-//         div = `Round: ${i}`)
-//         playRound()
-//     }
-//     if (pScore < cScore) {
-//         return "You lose the game"
-//     } else if (pScore > cScore) {
-//         return "You win the game"
-//     } else {
-//         return "It's a tie"
-//     }
-// }
-    
